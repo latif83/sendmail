@@ -9,6 +9,8 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 // Route for sending email
 app.post("/send-email", (req, res) => {
   const { to, subject, status, user, pass } = req.body;

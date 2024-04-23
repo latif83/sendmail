@@ -1,0 +1,14 @@
+http://localhost:3000
+
+###
+
+POST http://localhost:3000/send-email
+Content-Type: application/json
+
+{
+    "to" : "anonylatif@gmail.com",
+    "subject" : "Greenland Cleaning Service",
+    "status" : "Pending",
+    "user" : "latifm8360@gmail.com",
+    "pass" : "ziez xcek uckf uhyw"
+}

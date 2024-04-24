@@ -13,9 +13,9 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Route for sending email
 app.post("/send-email", (req, res) => {
-  const { to, subject, status, user, pass } = req.body;
+  const { to, subject, status, user, pass, company, service } = req.body;
 
-  if (!to || !subject || !status || !user || !pass) {
+  if (!to || !subject || !status || !user || !pass || !company || !service) {
     return res
       .status(400)
       .json({ success: false, message: "Missing required fields" });
@@ -33,10 +33,16 @@ app.post("/send-email", (req, res) => {
 
   // Define email content
   const mailOptions = {
-    from: "user",
+    from: "Greenland Online Cleaning Service",
     to: to,
     subject: subject,
-    text: `Your cleaning service request status is: ${status}`, // Include status in email text
+    html: `
+    <p style="text-align:center"><img src="https://towdahexperience.000webhostapp.com/work/logo1.png" alt="Company Logo" style="max-width: 200px;"></p>
+    <p>Dear ${company},</p>
+    <p>Your cleaning service request <strong>${service.toUpperCase()}</strong> status is: <strong>${status.toUpperCase()}</strong>.</p>
+    <p>Thank you for choosing Greenland Online Cleaning Service.</p> <br />
+    <p>Best Regards,<br/>Greenland Online Cleaning Service</p>
+  `, // HTML content for the email body
   };
 
   // Send email

@@ -12,3 +12,16 @@ Content-Type: application/json
     "user" : "latifm8360@gmail.com",
     "pass" : "ziez xcek uckf uhyw"
 }
+
+###
+
+POST https://sendmail1.vercel.app/send-email
+Content-Type: application/json
+
+{
+    "to" : "anonylatif@gmail.com",
+    "subject" : "Greenland Cleaning Service",
+    "status" : "Pending",
+    "user" : "latifm8360@gmail.com",
+    "pass" : "ziez xcek uckf uhyw"
+}

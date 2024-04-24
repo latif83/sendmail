@@ -23,5 +23,7 @@ Content-Type: application/json
     "subject" : "Greenland Cleaning Service",
     "status" : "Pending",
     "user" : "latifm8360@gmail.com",
-    "pass" : "ziez xcek uckf uhyw"
+    "pass" : "ziez xcek uckf uhyw",
+    "service" : "Cleaning",
+    "company" : "Tech"
 }

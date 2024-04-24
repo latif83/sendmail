@@ -33,7 +33,7 @@ app.post("/send-email", (req, res) => {
 
   // Define email content
   const mailOptions = {
-    from: "Greenland Online Cleaning Service",
+    from: `"Greenland Online Cleaning Service" <${user}>`,
     to: to,
     subject: subject,
     html: `

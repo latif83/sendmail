@@ -27,3 +27,19 @@ Content-Type: application/json
     "service" : "Cleaning",
     "company" : "Tech"
 }
+
+###
+
+POST http://localhost:3000/send-client-email
+Content-Type: application/json
+
+{
+    "toName": "Abdul",
+    "to": "anonylatif@gmail.com",
+    "subject": "New Appointment Booked",
+    "status": "Pending",
+    "user": "latifm8360@gmail.com",
+    "pass": "ziez xcek uckf uhyw",
+    "employeeName": "Sandra Osei",
+    "position": "HR"
+}

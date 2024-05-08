@@ -221,7 +221,7 @@ app.post("/send-memo-sender-email", async (req, res) => {
 
     // Validate required fields
     if (
-      !senderEmail ||
+      !senderEmail || 
       !senderName ||
       !subject ||
       !status ||
@@ -254,6 +254,11 @@ app.post("/send-memo-sender-email", async (req, res) => {
         <p>Your memo with title "${
           memoData.title
         }" has been updated to: <strong>${status.toUpperCase()}.</strong></p>
+        <p>
+        ${
+          memoData.declineReason ? "<strong> Reason: </strong>" : ""
+        } ${memoData.declineReason ? memoData.declineReason : ""}.
+        </p>
 
         <h1> Memo Details </h1>
         <ul>
@@ -299,7 +304,7 @@ app.post("/send-memo-receiver-email", async (req, res) => {
       status,
       user,
       pass,
-      memoData,
+      memoData
     } = req.body;
 
     // Validate required fields
@@ -341,6 +346,11 @@ app.post("/send-memo-receiver-email", async (req, res) => {
         } "${
         memoData.title
       }" status is <strong>${status.toUpperCase()}.</strong></p>
+      <p>
+        ${
+          memoData.declineReason ? "<strong> Reason: </strong>" : ""
+        } ${memoData.declineReason ? memoData.declineReason : ""}.
+        </p>
 
         <h1> Memo Details </h1>
         <ul>

@@ -125,6 +125,65 @@ app.post("/send-client-email", async (req, res) => {
   }
 });
 
+app.post("/send-reset-password-email", async (req, res) => {
+  try {
+    const {
+      to,
+      toName,
+      subject,
+      user,
+      pass,
+      code
+    } = req.body;
+
+    // console.log({to, toName, subject, status, user, pass, employeeName, position})
+
+    // Validate required fields
+    if (
+      !to ||
+      !toName ||
+      !subject ||
+      !user ||
+      !pass
+    ) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing required fields" });
+    }
+
+    // Configure Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: user,
+        pass: pass,
+      },
+    });
+
+    // Define email content
+    const mailOptions = {
+      from: `"Schedule Sync" <${user}>`,
+      to: to,
+      subject: subject,
+      html: `
+        <p style="text-align:center"><img src="https://towdahexperience.000webhostapp.com/work/logo.png" alt="Company Logo" style="max-width: 200px;"></p>
+       <p>There has being a request to reset your password, please use the code below to verify your identity!</p>
+        <p> <strong> ${code} </strong> </p>
+        <p>Ignore this message if you didn't make this request, your account is still secured!</p>
+        <p>Best Regards,<br/>Schedule Sync</p>
+      `,
+    };
+
+    // Send email
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.response);
+    res.json({ success: true, message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Error occurred while sending email:", error);
+    res.status(500).json({ success: false, message: "Failed to send email" });
+  }
+});
+
 app.post("/send-employee-email", async (req, res) => {
   try {
     const { to, toName, subject, status, user, pass, appointmentData } =

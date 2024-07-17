@@ -129,7 +129,6 @@ app.post("/send-reset-password-email", async (req, res) => {
   try {
     const {
       to,
-      toName,
       subject,
       user,
       pass,
@@ -141,7 +140,6 @@ app.post("/send-reset-password-email", async (req, res) => {
     // Validate required fields
     if (
       !to ||
-      !toName ||
       !subject ||
       !user ||
       !pass
